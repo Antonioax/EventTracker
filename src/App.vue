@@ -3,31 +3,11 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink :to="{ name: 'home' }">Home</RouterLink> |
-        <RouterLink :to="{ name: 'about' }">About</RouterLink>
-      </nav>
-      <h2 class="bg-red-200">sss</h2>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="flex flex-col justify-center items-center mt-20">
+    <nav class="flex gap-4 justify-between items-center text-green-800">
+      <RouterLink :to="{ name: 'home' }" class="font-semibold text-lg">Home</RouterLink> •
+      <RouterLink :to="{ name: 'about' }" class="font-semibold text-lg">About</RouterLink>
+    </nav>
+    <RouterView />
+  </div>
 </template>
-
-<style scoped>
-#layout {
-  font-family: Avenir, Arial, Helvetica, Arial, sans-serif;
-}
-nav {
-  padding: 30px;
-}
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
