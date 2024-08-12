@@ -34,17 +34,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <ul>
+  <ul class="flex flex-col gap-4 mb-16 w-[300px] max-w-[80%]">
     <EventCard v-for="event of allEvents" :key="event.id" :event="event"></EventCard>
   </ul>
 
-  <RouterLink :to="{ name: 'home', query: { page: page - 1 } }" rel="Back" v-if="page != 1"
-    >Back</RouterLink
-  >
-  <RouterLink
-    :to="{ name: 'home', query: { page: page + 1 } }"
-    rel="Next"
-    v-if="hasNextPage"
-    >Next</RouterLink
-  >
+  <div class="flex gap-2">
+    <RouterLink :to="{ name: 'home', query: { page: page - 1 } }" rel="Back" v-if="page != 1"
+      >Back</RouterLink
+    >
+    <div v-if="page != 1 && hasNextPage">∙</div>
+    <RouterLink :to="{ name: 'home', query: { page: page + 1 } }" rel="Next" v-if="hasNextPage"
+      >Next</RouterLink
+    >
+  </div>
 </template>
