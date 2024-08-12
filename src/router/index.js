@@ -6,6 +6,7 @@ import EventEdit from "@/views/event/EventEdit.vue";
 import EventRegister from "@/views/event/EventRegister.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
+import NotFound from "@/views/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,11 @@ const router = createRouter({
           component: EventRegister
         }
       ]
+    },
+    {
+      path: "/:catchAll(.*)",
+      name: "NotFound",
+      component: NotFound
     }
   ]
 });
