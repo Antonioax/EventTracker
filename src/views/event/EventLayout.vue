@@ -26,9 +26,11 @@ onMounted(() => {
     <h1 class="font-semibold text-5xl mb-6">{{ event.title }}</h1>
 
     <div class="flex justify-center gap-2 mb-6">
-      <RouterLink :to="{ name: 'EventDetails', params: { id } }" exact-active-class="font-bold">Details</RouterLink>
-      <RouterLink :to="{ name: 'EventRegister', params: { id } }" exact-active-class="font-bold">Register</RouterLink>
-      <RouterLink :to="{ name: 'EventEdit', params: { id } }" exact-active-class="font-bold">Edit</RouterLink>
+      <RouterLink :to="{ name: 'EventDetails' }" exact-active-class="font-bold">Details</RouterLink>
+      <RouterLink :to="{ name: 'EventRegister' }" exact-active-class="font-bold"
+        >Register</RouterLink
+      >
+      <RouterLink :to="{ name: 'EventEdit' }" exact-active-class="font-bold">Edit</RouterLink>
     </div>
 
     <RouterView :event="event"></RouterView>
