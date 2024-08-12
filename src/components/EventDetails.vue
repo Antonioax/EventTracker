@@ -26,9 +26,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="event">
-    <h1>{{ event.title }}</h1>
-    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-    <p>{{ event.description }}</p>
+  <div v-if="event" class="text-center">
+    <h1 class="font-semibold text-5xl mb-6">{{ event.title }}</h1>
+    <p class="mb-10">{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
+    <p>- {{ event.description }}- </p>
   </div>
 </template>
