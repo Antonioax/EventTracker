@@ -3,8 +3,10 @@ import EventCard from "@/components/EventCard.vue";
 import EventService from "@/services/EventService";
 
 import { onMounted, ref, computed, watchEffect } from "vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps(["page"]);
+const router = useRouter();
 
 const allEvents = ref([]);
 const totalEvents = ref(0);
@@ -22,7 +24,7 @@ async function fetchEvents() {
     allEvents.value = data;
     totalEvents.value = headers["x-total-count"];
   } catch (error) {
-    console.error("Error fetching data:", error);
+    router.push({ name: "NetworkError" });
   }
 }
 

@@ -4,9 +4,10 @@ import EventLayout from "@/views/event/EventLayout.vue";
 import EventDetails from "@/views/event/EventDetails.vue";
 import EventEdit from "@/views/event/EventEdit.vue";
 import EventRegister from "@/views/event/EventRegister.vue";
+import NotFound from "@/views/NotFound.vue";
+import NetworkError from "@/views/NetworkError.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
-import NotFound from "@/views/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,9 +47,20 @@ const router = createRouter({
       ]
     },
     {
+      path: "/404/:resource",
+      name: "NotFoundResource",
+      component: NotFound,
+      props: true
+    },
+    {
       path: "/:catchAll(.*)",
       name: "NotFound",
       component: NotFound
+    },
+    {
+      path: "/network-error",
+      name: "NetworkError",
+      component: NetworkError
     }
   ]
 });

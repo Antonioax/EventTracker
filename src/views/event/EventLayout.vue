@@ -2,8 +2,10 @@
 import EventService from "@/services/EventService";
 
 import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps(["id"]);
+const router = useRouter();
 
 const event = ref(null);
 
@@ -12,7 +14,14 @@ async function fetchEvents() {
     const { data } = await EventService.getEvent(props.id);
     event.value = data;
   } catch (error) {
-    console.error("Error fetching data:", error);
+    if (error.response && error.response.status === 404) {
+      router.push({
+        name: "NotFoundResource",
+        params: { resource: "event" }
+      });
+    } else {
+      router.push({ name: "NetworkError" });
+    }
   }
 }
 
