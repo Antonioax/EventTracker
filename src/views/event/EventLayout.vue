@@ -3,11 +3,7 @@ import EventService from "@/services/EventService";
 
 import { onMounted, ref } from "vue";
 
-const props = defineProps({
-  id: {
-    required: true
-  }
-});
+const props = defineProps(["id"]);
 
 const event = ref(null);
 
@@ -28,7 +24,13 @@ onMounted(() => {
 <template>
   <div v-if="event" class="text-center">
     <h1 class="font-semibold text-5xl mb-6">{{ event.title }}</h1>
-    <p class="mb-10">{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-    <p>- {{ event.description }}- </p>
+
+    <div class="flex justify-center gap-2 mb-6">
+      <RouterLink :to="{ name: 'EventDetails', params: { id } }" exact-active-class="font-bold">Details</RouterLink>
+      <RouterLink :to="{ name: 'EventRegister', params: { id } }" exact-active-class="font-bold">Register</RouterLink>
+      <RouterLink :to="{ name: 'EventEdit', params: { id } }" exact-active-class="font-bold">Edit</RouterLink>
+    </div>
+
+    <RouterView :event="event"></RouterView>
   </div>
 </template>

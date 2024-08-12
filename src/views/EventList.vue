@@ -39,11 +39,11 @@ onMounted(() => {
   </ul>
 
   <div class="flex gap-2">
-    <RouterLink :to="{ name: 'home', query: { page: page - 1 } }" rel="Back" v-if="page != 1"
+    <RouterLink :to="{ name: 'EventList', query: { page: page - 1 } }" rel="Back" v-if="page != 1"
       >Back</RouterLink
     >
     <div v-if="page != 1 && hasNextPage">∙</div>
-    <RouterLink :to="{ name: 'home', query: { page: page + 1 } }" rel="Next" v-if="hasNextPage"
+    <RouterLink :to="{ name: 'EventList', query: { page: page + 1 } }" rel="Next" v-if="hasNextPage"
       >Next</RouterLink
     >
   </div>
