@@ -1,6 +1,7 @@
-import About from "@/views/About.vue";
 import { mount } from "@vue/test-utils";
 import { beforeEach, describe, expect, it } from "vitest";
+
+import About from "@/views/About.vue";
 
 describe("About.vue", () => {
   let wrapper;
@@ -9,7 +10,7 @@ describe("About.vue", () => {
     wrapper = mount(About, {});
   })
 
-  it("should render component", () => {
+  it("should mount component", () => {
     expect(wrapper).toBeTruthy();
   });
 
