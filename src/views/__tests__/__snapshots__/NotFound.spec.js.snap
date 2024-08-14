@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NotFound.vue > should match snapshot 1`] = `
+"<div class="text-center">
+  <h1 class="text-5xl mb-4">Oops!</h1>
+  <h3 class="text-md mb-10">The page you're looking for is not here.</h3>
+  <routerlink to="[object Object]" class="text-2xl">Take me home</routerlink>
+</div>"
+`;

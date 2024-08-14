@@ -17,4 +17,8 @@ describe("NetworkError.vue", () => {
   it("should render text", () => {
     expect(wrapper.text()).toContain("It looks like you're experiencing some network issues");
   });
+
+  it("should match snapshot", () => {
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 });

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`About.vue > should match snapshot 1`] = `
+"<div class="about">
+  <h1>This is an about page.</h1>
+</div>"
+`;

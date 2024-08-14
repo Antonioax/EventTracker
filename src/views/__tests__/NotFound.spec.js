@@ -22,4 +22,8 @@ describe("NotFound.vue", () => {
     await wrapper.setProps({ resource: "event" });
     expect(wrapper.text()).toContain("The event you're looking for is not here.");
   });
+
+  it("should match snapshot", () => {
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 });
