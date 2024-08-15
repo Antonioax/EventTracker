@@ -19,7 +19,6 @@ const hasNextPage = computed(() => {
 
 async function fetchEvents() {
   try {
-    allEvents.value = null;
     const { data, headers } = await EventService.getEvents(2, page.value);
     allEvents.value = data;
     totalEvents.value = headers["x-total-count"];
@@ -36,17 +35,22 @@ onMounted(() => {
 </script>
 
 <template>
-  <ul class="flex flex-col gap-4 mb-16 w-[300px] max-w-[80%]">
-    <EventCard v-for="event of allEvents" :key="event.id" :event="event"></EventCard>
-  </ul>
+  <div v-if="allEvents.length > 0" class="flex flex-col justify-center items-center">
+    <ul class="flex flex-col gap-4 mb-16 w-[300px] max-w-[80%]">
+      <EventCard v-for="event of allEvents" :key="event.id" :event="event"></EventCard>
+    </ul>
+    <div class="flex gap-2">
+      <RouterLink :to="{ name: 'EventList', query: { page: page - 1 } }" rel="Back" v-if="page != 1"
+        >Back</RouterLink
+      >
+      <div v-if="page != 1 && hasNextPage">∙</div>
+      <RouterLink :to="{ name: 'EventList', query: { page: page + 1 } }" rel="Next" v-if="hasNextPage"
+        >Next</RouterLink
+      >
+    </div>
+  </div>
 
-  <div class="flex gap-2">
-    <RouterLink :to="{ name: 'EventList', query: { page: page - 1 } }" rel="Back" v-if="page != 1"
-      >Back</RouterLink
-    >
-    <div v-if="page != 1 && hasNextPage">∙</div>
-    <RouterLink :to="{ name: 'EventList', query: { page: page + 1 } }" rel="Next" v-if="hasNextPage"
-      >Next</RouterLink
-    >
+  <div v-else>
+    No events available.
   </div>
 </template>

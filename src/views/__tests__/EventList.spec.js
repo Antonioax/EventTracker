@@ -55,4 +55,19 @@ describe("EventList.vue", () => {
     const eventCards = wrapper.findAllComponents(EventCard);
     expect(eventCards.length).toBe(mockEvents.length);
   });
+
+  it("should render placeholder if no events", async () => {
+    const mockEvents = [];
+
+    EventService.getEvents.mockResolvedValue({
+      data: mockEvents,
+      headers: { "x-total-count": 0 }
+    });
+
+    await wrapper.vm.fetchEvents();
+
+    const eventCards = wrapper.findAllComponents(EventCard);
+    expect(eventCards.length).toBe(mockEvents.length);
+    expect(wrapper.text()).toContain("No events available.");
+  });
 });
