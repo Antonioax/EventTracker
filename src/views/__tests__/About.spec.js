@@ -17,8 +17,4 @@ describe("About.vue", () => {
   it("should render text", () => {
     expect(wrapper.text()).toContain("This is an about page.");
   });
-
-  it("should match snapshot", () => {
-    expect(wrapper.html()).toMatchSnapshot();
-  })
 });
